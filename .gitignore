@@ -53,8 +53,6 @@ autocode/*
 # Compiled class file
 *.class
 
-# Log file
-*.log
 
 # BlueJ files
 *.ctxt
@@ -73,4 +71,4 @@ autocode/*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
->>>>>>> 314d402e4f14903c21cf72a77ddc338d60e49c75
+
