@@ -3,12 +3,12 @@ package com.scqzy.gathering.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.scqzy.gathering.pojo.Enterprise;
+import com.scqzy.gathering.pojo.Gathering;
 /**
- * enterprise数据访问接口
+ * gathering数据访问接口
  * @author Administrator
  *
  */
-public interface EnterpriseDao extends JpaRepository<Enterprise,String>,JpaSpecificationExecutor<Enterprise>{
+public interface GatheringDao extends JpaRepository<Gathering,String>,JpaSpecificationExecutor<Gathering>{
 	
 }

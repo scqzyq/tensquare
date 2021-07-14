@@ -1,7 +1,6 @@
-package com.scqzy.recruit.controller;
-
-import com.scqzy.recruit.pojo.Recruit;
-import com.scqzy.recruit.service.RecruitService;
+package com.scqzy.gathering.controller;
+import com.scqzy.gathering.pojo.Gathering;
+import com.scqzy.gathering.service.GatheringService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
@@ -11,17 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 /**
- * recruit控制器层
+ * gathering控制器层
  * @author Administrator
  *
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/recruit")
-public class RecruitController {
+@RequestMapping("/gathering")
+public class GatheringController {
 
 	@Autowired
-	private RecruitService recruitService;
+	private GatheringService gatheringService;
 	
 	
 	/**
@@ -30,7 +29,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功",recruitService.findAll());
+		return new Result(true,StatusCode.OK,"查询成功",gatheringService.findAll());
 	}
 	
 	/**
@@ -40,7 +39,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable String id){
-		return new Result(true,StatusCode.OK,"查询成功",recruitService.findById(id));
+		return new Result(true,StatusCode.OK,"查询成功",gatheringService.findById(id));
 	}
 
 
@@ -53,8 +52,8 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<Recruit> pageList = recruitService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Recruit>(pageList.getTotalElements(), pageList.getContent()) );
+		Page<Gathering> pageList = gatheringService.findSearch(searchMap, page, size);
+		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Gathering>(pageList.getTotalElements(), pageList.getContent()) );
 	}
 
 	/**
@@ -64,27 +63,27 @@ public class RecruitController {
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
-        return new Result(true,StatusCode.OK,"查询成功",recruitService.findSearch(searchMap));
+        return new Result(true,StatusCode.OK,"查询成功",gatheringService.findSearch(searchMap));
     }
 	
 	/**
 	 * 增加
-	 * @param recruit
+	 * @param gathering
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public Result add(@RequestBody Recruit recruit  ){
-		recruitService.add(recruit);
+	public Result add(@RequestBody Gathering gathering  ){
+		gatheringService.add(gathering);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
 	
 	/**
 	 * 修改
-	 * @param recruit
+	 * @param gathering
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Recruit recruit, @PathVariable String id ){
-		recruit.setId(id);
-		recruitService.update(recruit);
+	public Result update(@RequestBody Gathering gathering, @PathVariable String id ){
+		gathering.setId(id);
+		gatheringService.update(gathering);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
 	
@@ -94,17 +93,8 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable String id){
-		recruitService.deleteById(id);
+		gatheringService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-
-	@GetMapping("search/recommend")
-	public Result recommend(String state) {
-		return new Result(recruitService.recommend(state));
-	}
-
-	@GetMapping("search/newlist")
-	public Result newList(String state) {
-		return new Result(recruitService.newList(state));
-	}
+	
 }

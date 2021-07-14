@@ -3,12 +3,12 @@ package com.scqzy.article.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.scqzy.article.pojo.Recruit;
+import com.scqzy.article.pojo.Channel;
 /**
- * recruit数据访问接口
+ * channel数据访问接口
  * @author Administrator
  *
  */
-public interface RecruitDao extends JpaRepository<Recruit,String>,JpaSpecificationExecutor<Recruit>{
+public interface ChannelDao extends JpaRepository<Channel,String>,JpaSpecificationExecutor<Channel>{
 	
 }
