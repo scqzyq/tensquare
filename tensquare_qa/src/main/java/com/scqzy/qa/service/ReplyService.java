@@ -26,7 +26,7 @@ import com.scqzy.qa.pojo.Reply;
 
 /**
  * reply服务层
- * 
+ *
  * @author Administrator
  *
  */
@@ -35,7 +35,7 @@ public class ReplyService {
 
 	@Autowired
 	private ReplyDao replyDao;
-	
+
 	@Autowired
 	private IdWorker idWorker;
 
@@ -47,7 +47,7 @@ public class ReplyService {
 		return replyDao.findAll();
 	}
 
-	
+
 	/**
 	 * 条件查询+分页
 	 * @param whereMap
@@ -61,7 +61,7 @@ public class ReplyService {
 		return replyDao.findAll(specification, pageRequest);
 	}
 
-	
+
 	/**
 	 * 条件查询
 	 * @param whereMap
@@ -138,7 +138,7 @@ public class ReplyService {
                 if (searchMap.get("nickname")!=null && !"".equals(searchMap.get("nickname"))) {
                 	predicateList.add(cb.like(root.get("nickname").as(String.class), "%"+(String)searchMap.get("nickname")+"%"));
                 }
-				
+
 				return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
 
 			}

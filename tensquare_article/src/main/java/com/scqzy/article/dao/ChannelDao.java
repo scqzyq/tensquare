@@ -10,5 +10,5 @@ import com.scqzy.article.pojo.Channel;
  *
  */
 public interface ChannelDao extends JpaRepository<Channel,String>,JpaSpecificationExecutor<Channel>{
-	
+
 }

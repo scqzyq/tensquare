@@ -21,8 +21,8 @@ public class EnterpriseController {
 
 	@Autowired
 	private EnterpriseService enterpriseService;
-	
-	
+
+
 	/**
 	 * 查询全部数据
 	 * @return
@@ -31,7 +31,7 @@ public class EnterpriseController {
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",enterpriseService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 * @param id ID
@@ -65,7 +65,7 @@ public class EnterpriseController {
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",enterpriseService.findSearch(searchMap));
     }
-	
+
 	/**
 	 * 增加
 	 * @param enterprise
@@ -75,7 +75,7 @@ public class EnterpriseController {
 		enterpriseService.add(enterprise);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
 	 * @param enterprise
@@ -86,7 +86,7 @@ public class EnterpriseController {
 		enterpriseService.update(enterprise);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除
 	 * @param id
@@ -101,5 +101,5 @@ public class EnterpriseController {
 	public Result hotList(String ishot) {
 		return new Result(enterpriseService.hotList(ishot));
 	}
-	
+
 }

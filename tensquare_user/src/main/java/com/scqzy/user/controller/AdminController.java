@@ -11,35 +11,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.scqzy.user.pojo.Recruit;
-import com.scqzy.user.service.RecruitService;
+import com.scqzy.user.pojo.Admin;
+import com.scqzy.user.service.AdminService;
 
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 /**
- * recruit控制器层
+ * admin控制器层
  * @author Administrator
  *
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/recruit")
-public class RecruitController {
+@RequestMapping("/admin")
+public class AdminController {
 
 	@Autowired
-	private RecruitService recruitService;
-	
-	
+	private AdminService adminService;
+
+
 	/**
 	 * 查询全部数据
 	 * @return
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功",recruitService.findAll());
+		return new Result(true,StatusCode.OK,"查询成功",adminService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 * @param id ID
@@ -47,7 +47,7 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable String id){
-		return new Result(true,StatusCode.OK,"查询成功",recruitService.findById(id));
+		return new Result(true,StatusCode.OK,"查询成功",adminService.findById(id));
 	}
 
 
@@ -60,8 +60,8 @@ public class RecruitController {
 	 */
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<Recruit> pageList = recruitService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Recruit>(pageList.getTotalElements(), pageList.getContent()) );
+		Page<Admin> pageList = adminService.findSearch(searchMap, page, size);
+		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Admin>(pageList.getTotalElements(), pageList.getContent()) );
 	}
 
 	/**
@@ -71,38 +71,38 @@ public class RecruitController {
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
-        return new Result(true,StatusCode.OK,"查询成功",recruitService.findSearch(searchMap));
+        return new Result(true,StatusCode.OK,"查询成功",adminService.findSearch(searchMap));
     }
-	
+
 	/**
 	 * 增加
-	 * @param recruit
+	 * @param admin
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public Result add(@RequestBody Recruit recruit  ){
-		recruitService.add(recruit);
+	public Result add(@RequestBody Admin admin  ){
+		adminService.add(admin);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
-	 * @param recruit
+	 * @param admin
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody Recruit recruit, @PathVariable String id ){
-		recruit.setId(id);
-		recruitService.update(recruit);
+	public Result update(@RequestBody Admin admin, @PathVariable String id ){
+		admin.setId(id);
+		adminService.update(admin);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除
 	 * @param id
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable String id){
-		recruitService.deleteById(id);
+		adminService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-	
+
 }

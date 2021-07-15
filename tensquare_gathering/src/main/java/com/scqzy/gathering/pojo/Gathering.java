@@ -17,7 +17,7 @@ public class Gathering implements Serializable{
 	private String id;//编号
 
 
-	
+
 	private String name;//活动名称
 	private String summary;//大会简介
 	private String detail;//详细说明
@@ -30,7 +30,7 @@ public class Gathering implements Serializable{
 	private String state;//是否可见
 	private String city;//城市
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -116,5 +116,5 @@ public class Gathering implements Serializable{
 	}
 
 
-	
+
 }

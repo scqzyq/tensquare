@@ -3,12 +3,12 @@ package com.scqzy.user.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.scqzy.user.pojo.Enterprise;
+import com.scqzy.user.pojo.User;
 /**
- * enterprise数据访问接口
+ * user数据访问接口
  * @author Administrator
  *
  */
-public interface EnterpriseDao extends JpaRepository<Enterprise,String>,JpaSpecificationExecutor<Enterprise>{
-	
+public interface UserDao extends JpaRepository<User,String>,JpaSpecificationExecutor<User>{
+
 }

@@ -1,7 +1,7 @@
-server: 
+server:
   port: 9002
-spring: 
-  application:  
+spring:
+  application:
     name: tensquare-recruit #指定服务名
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver

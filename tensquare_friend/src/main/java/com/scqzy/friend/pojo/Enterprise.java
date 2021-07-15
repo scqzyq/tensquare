@@ -17,7 +17,7 @@ public class Enterprise implements Serializable{
 	private String id;//ID
 
 
-	
+
 	private String name;//企业名称
 	private String summary;//企业简介
 	private String address;//企业地址
@@ -28,7 +28,7 @@ public class Enterprise implements Serializable{
 	private Integer jobcount;//职位数
 	private String url;//URL
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -100,5 +100,5 @@ public class Enterprise implements Serializable{
 	}
 
 
-	
+
 }

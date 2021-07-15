@@ -17,7 +17,7 @@ public class Article implements Serializable{
 	private String id;//ID
 
 
-	
+
 	private String columnid;//专栏ID
 	private String userid;//用户ID
 	private String title;//标题
@@ -35,7 +35,7 @@ public class Article implements Serializable{
 	private String url;//URL
 	private String type;//类型
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -156,5 +156,5 @@ public class Article implements Serializable{
 	}
 
 
-	
+
 }

@@ -16,5 +16,5 @@ public class RecruitApplication {
 	public IdWorker idWorkker(){
 		return new IdWorker(1, 1);
 	}
-	
+
 }

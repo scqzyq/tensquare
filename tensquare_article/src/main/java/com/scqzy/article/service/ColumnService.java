@@ -26,7 +26,7 @@ import com.scqzy.article.pojo.Column;
 
 /**
  * column服务层
- * 
+ *
  * @author Administrator
  *
  */
@@ -35,7 +35,7 @@ public class ColumnService {
 
 	@Autowired
 	private ColumnDao columnDao;
-	
+
 	@Autowired
 	private IdWorker idWorker;
 
@@ -47,7 +47,7 @@ public class ColumnService {
 		return columnDao.findAll();
 	}
 
-	
+
 	/**
 	 * 条件查询+分页
 	 * @param whereMap
@@ -61,7 +61,7 @@ public class ColumnService {
 		return columnDao.findAll(specification, pageRequest);
 	}
 
-	
+
 	/**
 	 * 条件查询
 	 * @param whereMap
@@ -138,7 +138,7 @@ public class ColumnService {
                 if (searchMap.get("state")!=null && !"".equals(searchMap.get("state"))) {
                 	predicateList.add(cb.like(root.get("state").as(String.class), "%"+(String)searchMap.get("state")+"%"));
                 }
-				
+
 				return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
 
 			}

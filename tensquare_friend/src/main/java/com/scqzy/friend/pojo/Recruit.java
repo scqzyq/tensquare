@@ -17,7 +17,7 @@ public class Recruit implements Serializable{
 	private String id;//ID
 
 
-	
+
 	private String jobname;//职位名称
 	private String salary;//薪资范围
 	private String condition;//经验要求
@@ -32,7 +32,7 @@ public class Recruit implements Serializable{
 	private String content1;//职位描述
 	private String content2;//职位要求
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -132,5 +132,5 @@ public class Recruit implements Serializable{
 	}
 
 
-	
+
 }

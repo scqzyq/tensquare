@@ -10,5 +10,5 @@ import com.scqzy.friend.pojo.Enterprise;
  *
  */
 public interface EnterpriseDao extends JpaRepository<Enterprise,String>,JpaSpecificationExecutor<Enterprise>{
-	
+
 }

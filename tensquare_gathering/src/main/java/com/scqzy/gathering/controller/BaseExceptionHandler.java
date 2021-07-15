@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 @ControllerAdvice
 public class BaseExceptionHandler {
-	
+
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result error(Exception e){
-        e.printStackTrace();        
+        e.printStackTrace();
         return new Result(false, StatusCode.ERROR, "执行出错");
     }
 }

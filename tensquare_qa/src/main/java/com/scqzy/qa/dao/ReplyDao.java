@@ -10,5 +10,5 @@ import com.scqzy.qa.pojo.Reply;
  *
  */
 public interface ReplyDao extends JpaRepository<Reply,String>,JpaSpecificationExecutor<Reply>{
-	
+
 }

@@ -17,7 +17,7 @@ public class Reply implements Serializable{
 	private String id;//编号
 
 
-	
+
 	private String problemid;//问题ID
 	private String content;//回答内容
 	private java.util.Date createtime;//创建日期
@@ -25,7 +25,7 @@ public class Reply implements Serializable{
 	private String userid;//回答人ID
 	private String nickname;//回答人昵称
 
-	
+
 	public String getId() {
 		return id;
 	}
@@ -76,5 +76,5 @@ public class Reply implements Serializable{
 	}
 
 
-	
+
 }

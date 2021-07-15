@@ -29,8 +29,8 @@ public class ColumnController {
 
 	@Autowired
 	private ColumnService columnService;
-	
-	
+
+
 	/**
 	 * 查询全部数据
 	 * @return
@@ -39,7 +39,7 @@ public class ColumnController {
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",columnService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 * @param id ID
@@ -73,7 +73,7 @@ public class ColumnController {
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",columnService.findSearch(searchMap));
     }
-	
+
 	/**
 	 * 增加
 	 * @param column
@@ -83,7 +83,7 @@ public class ColumnController {
 		columnService.add(column);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
 	 * @param column
@@ -94,7 +94,7 @@ public class ColumnController {
 		columnService.update(column);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除
 	 * @param id
@@ -104,5 +104,5 @@ public class ColumnController {
 		columnService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-	
+
 }

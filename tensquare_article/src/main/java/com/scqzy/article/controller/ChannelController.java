@@ -29,8 +29,8 @@ public class ChannelController {
 
 	@Autowired
 	private ChannelService channelService;
-	
-	
+
+
 	/**
 	 * 查询全部数据
 	 * @return
@@ -39,7 +39,7 @@ public class ChannelController {
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",channelService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 * @param id ID
@@ -73,7 +73,7 @@ public class ChannelController {
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",channelService.findSearch(searchMap));
     }
-	
+
 	/**
 	 * 增加
 	 * @param channel
@@ -83,7 +83,7 @@ public class ChannelController {
 		channelService.add(channel);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
 	 * @param channel
@@ -94,7 +94,7 @@ public class ChannelController {
 		channelService.update(channel);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除
 	 * @param id
@@ -104,5 +104,5 @@ public class ChannelController {
 		channelService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-	
+
 }

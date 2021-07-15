@@ -3,12 +3,12 @@ package com.scqzy.user.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.scqzy.user.pojo.Recruit;
+import com.scqzy.user.pojo.Admin;
 /**
- * recruit数据访问接口
+ * admin数据访问接口
  * @author Administrator
  *
  */
-public interface RecruitDao extends JpaRepository<Recruit,String>,JpaSpecificationExecutor<Recruit>{
-	
+public interface AdminDao extends JpaRepository<Admin,String>,JpaSpecificationExecutor<Admin>{
+
 }

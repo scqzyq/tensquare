@@ -10,5 +10,5 @@ import com.scqzy.friend.pojo.Recruit;
  *
  */
 public interface RecruitDao extends JpaRepository<Recruit,String>,JpaSpecificationExecutor<Recruit>{
-	
+
 }

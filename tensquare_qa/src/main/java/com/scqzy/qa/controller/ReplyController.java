@@ -29,8 +29,8 @@ public class ReplyController {
 
 	@Autowired
 	private ReplyService replyService;
-	
-	
+
+
 	/**
 	 * 查询全部数据
 	 * @return
@@ -39,7 +39,7 @@ public class ReplyController {
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",replyService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 * @param id ID
@@ -73,7 +73,7 @@ public class ReplyController {
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",replyService.findSearch(searchMap));
     }
-	
+
 	/**
 	 * 增加
 	 * @param reply
@@ -83,7 +83,7 @@ public class ReplyController {
 		replyService.add(reply);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
 	 * @param reply
@@ -94,7 +94,7 @@ public class ReplyController {
 		replyService.update(reply);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除
 	 * @param id
@@ -104,5 +104,5 @@ public class ReplyController {
 		replyService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
-	
+
 }
