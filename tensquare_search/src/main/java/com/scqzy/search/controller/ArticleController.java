@@ -24,4 +24,9 @@ public class ArticleController {
         articleService.save(article);
         return new Result("保存成功");
     }
+
+    @GetMapping("/{key}/{page}/{size}")
+    public Result findByKey(@PathVariable String key, @PathVariable int page, @PathVariable int size) {
+        return new Result(articleService.findByKey(key,page,size));
+    }
 }

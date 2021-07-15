@@ -1,10 +1,11 @@
 package com.scqzy.search.config;
 
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.client.ClientConfiguration;
-import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 
@@ -19,11 +20,20 @@ public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
     @Override
     @Bean
     public RestHighLevelClient elasticsearchClient() {
+        RestClientBuilder restClientBuilder = RestClient.builder(
+                new HttpHost(
+                        "192.168.167.130",
+                        9200,
+                        "http")
+        ).setRequestConfigCallback( // 自定义超时时间
+                requestConfigBuilder -> {
 
-        final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-                .connectedTo("localhost:9201", "localhost:9202", "localhost:9203")
-                .build();
-        return RestClients.create(clientConfiguration).rest();
+                    return requestConfigBuilder.setConnectTimeout(5000 * 1000) // 自定义连接超时时间
+                            .setSocketTimeout(6000 * 1000);// 自定义Socket超时时间（默认 30,000 milliseconds ）
+                }
+        );
+
+        return new RestHighLevelClient(restClientBuilder);
     }
 
     @Bean
