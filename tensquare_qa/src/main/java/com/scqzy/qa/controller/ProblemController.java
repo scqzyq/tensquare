@@ -29,8 +29,8 @@ public class ProblemController {
     private BaseClient baseClient;
 
     @GetMapping("test")
-    public Result testFeign() {
-        return baseClient.findById("2");
+    public Result testFeign(String id) {
+        return baseClient.findById(id);
     }
     /**
      * 查询全部数据

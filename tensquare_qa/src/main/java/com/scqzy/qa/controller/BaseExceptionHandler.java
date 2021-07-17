@@ -17,7 +17,7 @@ public class BaseExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result error(Exception e){
-        log.error(e.toString());
+        log.error("捕获异常",e);
         if (e instanceof AuthUnsatisfyException) {
             return new Result(false, StatusCode.ACCESS_ERROR, e.getMessage());
         }

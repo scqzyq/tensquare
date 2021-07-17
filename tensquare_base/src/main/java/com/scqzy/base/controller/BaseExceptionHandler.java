@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class BaseExceptionHandler {
     @ExceptionHandler
     public Result exception(Exception e) {
-        log.error(e.toString());
+        log.error("捕获异常",e);
         if (e instanceof NoNecessaryFieldException) {
             return new Result(false, StatusCode.NO_NECESSARY_FIELD_ERROR, e.getMessage());
         }
