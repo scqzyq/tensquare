@@ -1,0 +1,10 @@
+server:
+  port: 8761
+eureka:
+  server:
+    enable-self-preservation: false # 关闭自我保护（解决关闭服务不剔除）
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/

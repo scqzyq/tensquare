@@ -121,4 +121,9 @@ public class UserController {
     public Result login(@RequestBody User user) {
         return userService.login(user);
     }
+
+    @PutMapping("{userid}/{friendid}/{x}")
+    public void updateFanscountAndFollowcount(@PathVariable String userid, @PathVariable String friendid, @PathVariable int x) {
+        userService.updateFanscountAndFollowcount(userid,friendid,x);
+    }
 }

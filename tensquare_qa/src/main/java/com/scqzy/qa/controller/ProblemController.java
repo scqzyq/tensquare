@@ -1,5 +1,6 @@
 package com.scqzy.qa.controller;
 
+import com.scqzy.qa.feign.BaseClient;
 import com.scqzy.qa.pojo.Problem;
 import com.scqzy.qa.service.ProblemService;
 import entity.PageResult;
@@ -24,7 +25,13 @@ public class ProblemController {
     @Autowired
     private ProblemService problemService;
 
+    @Autowired
+    private BaseClient baseClient;
 
+    @GetMapping("test")
+    public Result testFeign() {
+        return baseClient.findById("2");
+    }
     /**
      * 查询全部数据
      *

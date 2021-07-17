@@ -235,4 +235,9 @@ public class UserService {
         }
         return new Result("用户不存在或密码错误");
     }
+
+    public void updateFanscountAndFollowcount(String userid, String friendid, int x) {
+        userDao.updateFanscount(x,userid);
+        userDao.updateFollowcount(x,friendid);
+    }
 }

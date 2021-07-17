@@ -19,3 +19,9 @@ jwt:
   config:
     key: scqzy
     ttl: 3600000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
