@@ -117,5 +117,8 @@ public class UserController {
         return userService.register(code, user);
     }
 
-
+    @PostMapping("login")
+    public Result login(@RequestBody User user) {
+        return userService.login(user);
+    }
 }

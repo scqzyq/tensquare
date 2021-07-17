@@ -1,5 +1,7 @@
 package com.scqzy.user.pojo;
 
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,6 +13,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="tb_admin")
+@ToString
 public class Admin implements Serializable{
 
 	@Id

@@ -4,6 +4,7 @@ import com.scqzy.user.dao.UserDao;
 import com.scqzy.user.pojo.User;
 import entity.Result;
 import entity.StatusCode;
+import exception.AuthUnsatisfyException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,13 +13,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import util.IdWorker;
+import util.JwtUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +45,15 @@ public class UserService {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    private HttpServletRequest request;
 
     /**
      * 查询全部列表
@@ -95,6 +108,7 @@ public class UserService {
      */
     public void add(User user) {
         user.setId(idWorker.nextId() + ""); //雪花分布式ID生成器
+        user.setPassword(encoder.encode(user.getPassword()));
         user.setFollowcount(0);//关注数
         user.setFanscount(0);//粉丝数
         user.setOnline(0L);//在线时长
@@ -119,6 +133,10 @@ public class UserService {
      * @param id
      */
     public void deleteById(String id) {
+        String admin = (String) request.getAttribute("claims_admin");
+        if (StringUtils.isBlank(admin)) {
+            throw new AuthUnsatisfyException("权限不足");
+        }
         userDao.deleteById(id);
     }
 
@@ -203,5 +221,18 @@ public class UserService {
         }
         add(user);
         return new Result("注册成功");
+    }
+
+    public Result login(User user) {
+        User userDb = userDao.findByMobile(user.getMobile());
+        if (Objects.nonNull(userDb) && encoder.matches(user.getPassword(), userDb.getPassword())) {
+            String token = jwtUtil.createJWT(userDb.getId(), userDb.getMobile(), "user");
+            HashMap<String, String> map = new HashMap<>();
+            map.put("token", token);
+            map.put("roles", "user");
+            map.put("nickname", userDb.getNickname());
+            return new Result("登录成功", map);
+        }
+        return new Result("用户不存在或密码错误");
     }
 }

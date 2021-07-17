@@ -41,7 +41,7 @@ public class Result {
     }
 
     public Result(boolean flag, Integer code, String message, Object data) {
-        this();
+        this(flag, code, message);
         this.data = data;
     }
 }

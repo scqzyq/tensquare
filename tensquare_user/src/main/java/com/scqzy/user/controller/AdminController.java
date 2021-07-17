@@ -1,22 +1,14 @@
 package com.scqzy.user.controller;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.scqzy.user.pojo.Admin;
 import com.scqzy.user.service.AdminService;
-
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 /**
  * admin控制器层
  * @author Administrator
@@ -105,4 +97,8 @@ public class AdminController {
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
 
+	@PostMapping("login")
+	public Result login(@RequestBody Admin admin) {
+		return adminService.login(admin);
+	}
 }

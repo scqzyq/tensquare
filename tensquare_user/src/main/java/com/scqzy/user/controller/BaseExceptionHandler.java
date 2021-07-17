@@ -1,22 +1,26 @@
 package com.scqzy.user.controller;
+
 import entity.Result;
 import entity.StatusCode;
+import exception.AuthUnsatisfyException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 /**
  * 统一异常处理类
  */
+@Slf4j
 @ControllerAdvice
 public class BaseExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result error(Exception e){
-        e.printStackTrace();
+        log.error(e.toString());
+        if (e instanceof AuthUnsatisfyException) {
+            return new Result(false, StatusCode.ACCESS_ERROR, e.getMessage());
+        }
         return new Result(false, StatusCode.ERROR, "执行出错");
     }
 }

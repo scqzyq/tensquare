@@ -11,4 +11,5 @@ import com.scqzy.user.pojo.User;
  */
 public interface UserDao extends JpaRepository<User,String>,JpaSpecificationExecutor<User>{
 
+    User findByMobile(String mobile);
 }

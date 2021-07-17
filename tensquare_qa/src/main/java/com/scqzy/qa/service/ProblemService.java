@@ -3,6 +3,8 @@ package com.scqzy.qa.service;
 import com.scqzy.qa.dao.ProblemDao;
 import com.scqzy.qa.pojo.Problem;
 import entity.PageResult;
+import exception.AuthUnsatisfyException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class ProblemService {
 
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private HttpServletRequest request;
 
     /**
      * 查询全部列表
@@ -85,7 +91,11 @@ public class ProblemService {
      * @param problem
      */
     public void add(Problem problem) {
-        // problem.setId( idWorker.nextId()+"" ); 雪花分布式ID生成器
+        problem.setId(idWorker.nextId() + ""); //雪花分布式ID生成器
+        String token = (String) request.getAttribute("claims_user");
+        if (StringUtils.isBlank(token)) {
+            throw new AuthUnsatisfyException("权限不足");
+        }
         problemDao.save(problem);
     }
 

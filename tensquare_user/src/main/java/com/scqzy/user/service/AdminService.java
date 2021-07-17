@@ -2,20 +2,21 @@ package com.scqzy.user.service;
 
 import com.scqzy.user.dao.AdminDao;
 import com.scqzy.user.pojo.Admin;
+import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import util.IdWorker;
+import util.JwtUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * admin服务层
@@ -30,6 +31,12 @@ public class AdminService {
 
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     /**
      * 查询全部列表
@@ -83,7 +90,8 @@ public class AdminService {
      * @param admin
      */
     public void add(Admin admin) {
-        // admin.setId( idWorker.nextId()+"" ); 雪花分布式ID生成器
+        admin.setId(idWorker.nextId() + ""); //雪花分布式ID生成器
+        admin.setPassword(encoder.encode(admin.getPassword()));
         adminDao.save(admin);
     }
 
@@ -142,4 +150,16 @@ public class AdminService {
 
     }
 
+    public Result login(Admin admin) {
+        Admin adminDb = adminDao.findByLoginname(admin.getLoginname());
+        if (Objects.nonNull(adminDb) && encoder.matches(admin.getPassword(), adminDb.getPassword())) {
+            String token = jwtUtil.createJWT(adminDb.getId(), adminDb.getLoginname(), "admin");
+            HashMap<String, String> map = new HashMap<>();
+            map.put("token", token);
+            map.put("roles", "admin");
+            map.put("loginname",adminDb.getLoginname());
+            return new Result("登录成功", map);
+        }
+        return new Result("用户不存在或密码错误");
+    }
 }
