@@ -30,7 +30,9 @@ public class ProblemController {
 
     @GetMapping("test")
     public Result testFeign(String id) {
-        return baseClient.findById(id);
+        Result byId = baseClient.findById(id);
+        System.out.println(byId);
+        return byId;
     }
     /**
      * 查询全部数据

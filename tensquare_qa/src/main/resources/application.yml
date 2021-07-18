@@ -14,6 +14,8 @@ spring:
 feign:
   circuitbreaker:
     enabled: true  # 断路器打开
+  httpclient:
+    enabled: true
 
 jwt:
   config:

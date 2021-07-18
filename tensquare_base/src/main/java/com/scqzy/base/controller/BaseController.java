@@ -27,8 +27,8 @@ public class BaseController {
 
     @GetMapping("/{labelId}")
     public Result findById(@PathVariable("labelId") String labelId) {
-        throw new RuntimeException("接口有误");
-//        return new Result("查询成功", labelService.findById(labelId));
+//        throw new RuntimeException("接口有误");
+        return new Result("查询成功", labelService.findById(labelId));
     }
 
     @PostMapping()

@@ -1,0 +1,92 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: tensquare-gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 60000
+      loadbalancer:
+        use404: true # 找不到服务报404（默认报503）
+      discovery:
+        locator:
+          enabled: true # 开启网关
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-headers: "*"
+            allowed-origins: "*"
+            allowed-methods: "*"
+      routes:
+        - id: tensquare-article
+          uri: lb://tensquare-article
+          predicates:
+            - Path=/article/**
+          filters:
+            - StripPrefix=1 # 去掉转发前缀的层数
+        - id: tensquare-base
+          uri: lb://tensquare-base
+          predicates:
+            - Path=/base/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-friend
+          uri: lb://tensquare-friend
+          predicates:
+            - Path=/friend/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-gathering
+          uri: lb://tensquare-gathering
+          predicates:
+            - Path=/gathering/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-qa
+          uri: lb://tensquare-qa
+          predicates:
+            - Path=/qa/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-recruit
+          uri: lb://tensquare-recruit
+          predicates:
+            - Path=/recruit/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-search
+          uri: lb://tensquare-search
+          predicates:
+            - Path=/search/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-sms
+          uri: lb://tensquare-sms
+          predicates:
+            - Path=/sms/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-spit
+          uri: lb://tensquare-spit
+          predicates:
+            - Path=/spit/**
+          filters:
+            - StripPrefix=1
+        - id: tensquare-user
+          uri: lb://tensquare-user
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
