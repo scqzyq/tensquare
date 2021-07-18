@@ -2,9 +2,9 @@ package com.scqzy.user.service;
 
 import com.scqzy.user.dao.UserDao;
 import com.scqzy.user.pojo.User;
-import entity.Result;
-import entity.StatusCode;
-import exception.AuthUnsatisfyException;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
+import com.scqzy.exception.AuthUnsatisfyException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -15,8 +15,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import util.IdWorker;
-import util.JwtUtil;
+import com.scqzy.util.IdWorker;
+import com.scqzy.util.JwtUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

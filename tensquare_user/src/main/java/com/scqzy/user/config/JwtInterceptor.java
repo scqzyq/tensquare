@@ -1,12 +1,12 @@
 package com.scqzy.user.config;
 
-import exception.AuthUnsatisfyException;
+import com.scqzy.exception.AuthUnsatisfyException;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
-import util.JwtUtil;
+import com.scqzy.util.JwtUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

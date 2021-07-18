@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: gateway # 不使用profile和label配置 使用默认环境
+      discovery:
+        enabled: true
+        service-id: tensquare-config
+  main:
+    web-application-type: reactive

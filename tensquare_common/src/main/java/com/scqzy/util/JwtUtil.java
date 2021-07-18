@@ -1,4 +1,4 @@
-package util;
+package com.scqzy.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

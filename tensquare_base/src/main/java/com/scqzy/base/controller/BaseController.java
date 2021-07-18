@@ -2,8 +2,8 @@ package com.scqzy.base.controller;
 
 import com.scqzy.base.pojo.Label;
 import com.scqzy.base.service.LabelService;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,17 +2,19 @@ package com.scqzy.base.service;
 
 import com.scqzy.base.dao.LabelDao;
 import com.scqzy.base.pojo.Label;
-import entity.PageResult;
-import exception.NoNecessaryFieldException;
+import com.scqzy.entity.PageResult;
+import com.scqzy.exception.NoNecessaryFieldException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import util.IdWorker;
+import com.scqzy.util.IdWorker;
 
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+@RefreshScope
 public class LabelService {
 
     @Autowired
@@ -34,7 +37,11 @@ public class LabelService {
     @Autowired
     private IdWorker idWorker;
 
+    @Value("${spring.datasource.url}")
+    private String url;
+
     public List<Label> findAll() {
+        System.out.println(url);
         return labelDao.findAll();
     }
 

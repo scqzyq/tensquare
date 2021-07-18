@@ -1,4 +1,4 @@
-package exception;
+package com.scqzy.exception;
 
 /**
  * @Description: 登录权限不足异常类

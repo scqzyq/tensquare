@@ -2,8 +2,8 @@ package com.scqzy.qa.service;
 
 import com.scqzy.qa.dao.ProblemDao;
 import com.scqzy.qa.pojo.Problem;
-import entity.PageResult;
-import exception.AuthUnsatisfyException;
+import com.scqzy.entity.PageResult;
+import com.scqzy.exception.AuthUnsatisfyException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import util.IdWorker;
+import com.scqzy.util.IdWorker;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

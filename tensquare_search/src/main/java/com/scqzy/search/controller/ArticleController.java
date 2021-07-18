@@ -2,7 +2,7 @@ package com.scqzy.search.controller;
 
 import com.scqzy.search.pojo.Article;
 import com.scqzy.search.service.ArticleService;
-import entity.Result;
+import com.scqzy.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

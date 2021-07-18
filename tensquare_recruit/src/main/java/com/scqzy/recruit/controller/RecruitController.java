@@ -2,9 +2,9 @@ package com.scqzy.recruit.controller;
 
 import com.scqzy.recruit.pojo.Recruit;
 import com.scqzy.recruit.service.RecruitService;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.PageResult;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

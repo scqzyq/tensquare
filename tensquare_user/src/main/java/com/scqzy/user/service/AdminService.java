@@ -2,15 +2,15 @@ package com.scqzy.user.service;
 
 import com.scqzy.user.dao.AdminDao;
 import com.scqzy.user.pojo.Admin;
-import entity.Result;
+import com.scqzy.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import util.IdWorker;
-import util.JwtUtil;
+import com.scqzy.util.IdWorker;
+import com.scqzy.util.JwtUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

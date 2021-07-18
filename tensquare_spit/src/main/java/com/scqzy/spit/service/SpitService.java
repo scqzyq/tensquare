@@ -2,9 +2,9 @@ package com.scqzy.spit.service;
 
 import com.scqzy.spit.dao.SpitDao;
 import com.scqzy.spit.pojo.Spit;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.PageResult;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import util.IdWorker;
+import com.scqzy.util.IdWorker;
 
 import java.io.Serializable;
 import java.util.Date;

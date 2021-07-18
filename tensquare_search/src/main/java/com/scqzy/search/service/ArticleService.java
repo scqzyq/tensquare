@@ -2,13 +2,13 @@ package com.scqzy.search.service;
 
 import com.scqzy.search.dao.ArticleDao;
 import com.scqzy.search.pojo.Article;
-import entity.PageResult;
+import com.scqzy.entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import util.IdWorker;
+import com.scqzy.util.IdWorker;
 
 /**
  * @Description:

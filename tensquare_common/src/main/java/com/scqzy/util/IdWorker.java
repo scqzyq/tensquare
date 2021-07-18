@@ -1,4 +1,4 @@
-package util;
+package com.scqzy.util;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package exception;
+package com.scqzy.exception;
 
 /**
  * @Description: 缺少必要字段异常类

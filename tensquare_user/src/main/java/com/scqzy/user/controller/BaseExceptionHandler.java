@@ -1,8 +1,8 @@
 package com.scqzy.user.controller;
 
-import entity.Result;
-import entity.StatusCode;
-import exception.AuthUnsatisfyException;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
+import com.scqzy.exception.AuthUnsatisfyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

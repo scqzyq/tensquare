@@ -1,0 +1,37 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: tensquare-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/scqzyq/tensquare_config.git
+          default-label: master
+#          default-label: dev
+          timeout: 20
+          force-pull: true
+          skip-ssl-validation: true
+          username: scqzyq
+          password:
+
+  rabbitmq:
+    host: 192.168.167.130
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-env, bus-refresh
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'

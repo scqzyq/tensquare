@@ -1,5 +1,4 @@
 package com.scqzy.article.controller;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.scqzy.article.pojo.Column;
 import com.scqzy.article.service.ColumnService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.PageResult;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 /**
  * column控制器层
  * @author Administrator

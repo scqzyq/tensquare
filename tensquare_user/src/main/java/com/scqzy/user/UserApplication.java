@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import util.IdWorker;
-import util.JwtUtil;
+import com.scqzy.util.IdWorker;
+import com.scqzy.util.JwtUtil;
 
 @SpringBootApplication
 @EnableEurekaClient

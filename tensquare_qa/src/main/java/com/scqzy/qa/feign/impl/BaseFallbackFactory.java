@@ -1,8 +1,8 @@
 package com.scqzy.qa.feign.impl;
 
 import com.scqzy.qa.feign.BaseClient;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;

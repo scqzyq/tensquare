@@ -2,8 +2,8 @@ package com.scqzy.spit.controller;
 
 import com.scqzy.spit.pojo.Spit;
 import com.scqzy.spit.service.SpitService;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

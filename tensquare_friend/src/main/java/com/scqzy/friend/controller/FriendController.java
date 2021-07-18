@@ -1,7 +1,7 @@
 package com.scqzy.friend.controller;
 
 import com.scqzy.friend.service.FriendService;
-import entity.Result;
+import com.scqzy.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

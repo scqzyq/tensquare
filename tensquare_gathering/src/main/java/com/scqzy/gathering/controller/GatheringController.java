@@ -1,9 +1,9 @@
 package com.scqzy.gathering.controller;
 import com.scqzy.gathering.pojo.Gathering;
 import com.scqzy.gathering.service.GatheringService;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.scqzy.entity.PageResult;
+import com.scqzy.entity.Result;
+import com.scqzy.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

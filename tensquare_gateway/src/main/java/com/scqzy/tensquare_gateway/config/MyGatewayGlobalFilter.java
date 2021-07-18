@@ -46,7 +46,8 @@ public class MyGatewayGlobalFilter implements GlobalFilter, Ordered {
             log.info(authorization);
             if (StringUtils.isBlank(authorization) || !authorization.startsWith("Bearer ")) {
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                return exchange.getResponse().setComplete();
+//                return exchange.getResponse().setComplete();
+                return chain.filter(exchange);
             }
             return chain.filter(exchange);
         }));
