@@ -1,0 +1,47 @@
+{
+  "flag": true,
+  "code": 20000,
+  "message": "success",
+  "data": [
+    {
+      "id": "1",
+      "labelName": "JAVA",
+      "state": "1",
+      "count": 3,
+      "fans": 5,
+      "recommend": "1"
+    },
+    {
+      "id": "1414873184750145536",
+      "labelName": "MYSQL",
+      "state": "1",
+      "count": 3,
+      "fans": 5,
+      "recommend": "1"
+    },
+    {
+      "id": "2",
+      "labelName": "PHP",
+      "state": "1",
+      "count": null,
+      "fans": null,
+      "recommend": null
+    },
+    {
+      "id": "3",
+      "labelName": "C++",
+      "state": "1",
+      "count": null,
+      "fans": null,
+      "recommend": null
+    },
+    {
+      "id": "4",
+      "labelName": "python",
+      "state": "1",
+      "count": null,
+      "fans": null,
+      "recommend": null
+    }
+  ]
+}

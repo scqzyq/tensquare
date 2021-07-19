@@ -13,8 +13,6 @@ spring:
           timeout: 20
           force-pull: true
           skip-ssl-validation: true
-          username: scqzyq
-          password:
 
   rabbitmq:
     host: 192.168.167.130

@@ -2,9 +2,10 @@ spring:
   cloud:
     config:
       name: base # 不使用profile和label配置 使用默认环境
-      discovery:
-        enabled: true
-        service-id: tensquare-config
+#      discovery:
+#        enabled: true
+#        service-id: tensquare-config
+      uri: http://127.0.0.1:12000
 
 logging:
   level:
