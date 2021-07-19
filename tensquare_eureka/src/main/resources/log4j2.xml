@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--status="WARN" :用于设置log4j2自身内部日志的信息输出级别，默认是OFF-->
+<!--monitorInterval="30"  :间隔秒数,自动检测配置文件的变更和重新配置本身-->
+<configuration status="DEBUG">
+    <Properties>
+        <!--自定义一些常量，之后使用${变量名}引用-->
+        <Property name="logFilePath">logs</Property>
+        <Property name="logFileName">eureka</Property>
+        <Property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level} --- [%thread][%X{traceId}] [%style{%C{5}}{normal,cyan}] [%L] : %msg%n</Property>
+    </Properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}" disableAnsi="false" noConsoleNoAnsi="false"/>
+        </Console>
+
+        <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="RollingFileInfo" fileName="/${logFilePath}/${logFileName}/${logFileName}.log"
+                     filePattern="${logFilePath}/$${date:yyyy-MM}/${logFileName}_%d{yyyy-MM-dd}_%i.log">
+            <!--控制台只输出info及以上级别的信息（onMatch），其他的直接拒绝（onMismatch），根据这个可以特殊定制化-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${logPattern}</Pattern> <!--定义日志,输出的格式-->
+            </PatternLayout>
+            <Policies>
+                <!--按天进行分割日志-->
+                <TimeBasedTriggeringPolicy/>
+                <!--按文件占用空间进行分割日志-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- 切割数量 -->
+            <DefaultRolloverStrategy max="10000" />
+        </RollingFile>
+    </appenders>
+    <loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFileInfo"/>
+        </Root>
+    </loggers>
+</configuration>

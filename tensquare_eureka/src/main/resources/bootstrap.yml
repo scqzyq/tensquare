@@ -1,5 +1,8 @@
 server:
   port: 8761
+spring:
+  application:
+    name: tensquare_eureka
 eureka:
   server:
     enable-self-preservation: false # 关闭自我保护（解决关闭服务不剔除）
@@ -12,3 +15,5 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
+logging:
+  config: classpath:log4j2.xml
