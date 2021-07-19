@@ -5,7 +5,7 @@ spring:
 #      discovery:
 #        enabled: true
 #        service-id: tensquare-config
-      uri: http://127.0.0.1:12000
+      uri: http://192.168.167.130:12000
 
 logging:
   level:
